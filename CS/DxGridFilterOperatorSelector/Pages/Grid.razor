@@ -1,0 +1,62 @@
+﻿@page "/grid"
+
+@using DxGridFilterOperatorSelector.Data
+@using DxGridFilterOperatorSelector.Components
+@inject WeatherForecastService ForecastService
+
+
+@if (forecasts == null) {
+    <p><em>Loading...</em></p>
+}
+else {
+    <style>
+        .filter-type-container {
+            display: flex;
+        }
+
+            .filter-type-container > div {
+                width: 100%;
+            }
+
+        .filter-type-button {
+            margin-right: 5px;
+        }
+    </style>
+    <DxGrid Data="@forecasts" ShowFilterRow="true"
+        CssClass="mw-1100">
+        <Columns>
+            <DxGridDataColumn Caption="Date" FieldName="Date">
+                <FilterRowCellTemplate>
+                    <OperatorType FilterContext="@context">
+                        <DxDateEdit Date="(DateTime?)context.FilterRowValue"
+                                DateChanged="(DateTime? v) => context.FilterRowValue = v" />
+                    </OperatorType>
+                </FilterRowCellTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Summary" FieldName="Summary">
+                <FilterRowCellTemplate>
+                    <OperatorType FilterContext="@context">
+                        <DxTextBox Text="@((string)context.FilterRowValue)"
+                               TextChanged="(string v) => context.FilterRowValue = v" />
+                    </OperatorType>
+                </FilterRowCellTemplate>
+            </DxGridDataColumn>
+            <DxGridDataColumn Caption="Temperature" FieldName="TemperatureF" FilterRowOperatorType="GridFilterRowOperatorType.Less">
+                <FilterRowCellTemplate>
+                    <OperatorType FilterContext="@context">
+                        <DxSpinEdit Value="(int?)context.FilterRowValue"
+                                ValueChanged="(int? v) => context.FilterRowValue = v" />
+                    </OperatorType>
+                </FilterRowCellTemplate>
+            </DxGridDataColumn>
+        </Columns>
+    </DxGrid>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync() {
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+    }
+}
