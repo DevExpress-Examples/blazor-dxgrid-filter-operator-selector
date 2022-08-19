@@ -5,7 +5,9 @@
 
 # Grid for Blazor - How to implement filter operator selector
 
-This example demonstrates how to use the [FilterRowCellTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowCellTemplate) template to implement a filter operator selector.
+This example demonstrates how to implement a custom filter row to provide users with operator selector.
+
+In each grid column, the [FilterRowCellTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowCellTemplate) property specifies a template for the filter row cell. The template contains the **OperatorType** component (see the [OperatorType.razor](./CS/DxGridFilterOperatorSelector/Components/OperatorType.razor) file). The component includes the DxButton that opens a dropdown window with a list of operators. When a user selects an operator, the column's [FilterRowOperatorType](http://docs.devexpress.devx/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowOperatorType) property is set to the specified value and the column values are filtered.
 
 ![Grid with filter](image.png)
 
