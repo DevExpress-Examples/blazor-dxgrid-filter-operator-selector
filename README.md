@@ -4,15 +4,15 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# Grid for Blazor - How to implement filter operator selector
+# Grid for Blazor - Incorporate a selector for filter row operator type
 
-This example demonstrates how to implement a filter row with a custom operator selector.
+This example demonstrates how you can extend our Blazor Grid’s Filter Row with a custom operator selector.
 
-In each grid column, the [FilterRowCellTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowCellTemplate) property specifies a template for the filter row cell. The template contains the **OperatorType** component (see the [OperatorType.razor](./CS/DxGridFilterOperatorSelector/Components/OperatorType.razor) file). The component includes a DxButton that opens a dropdown window with a list of operators. When a user selects an operator, the column's [FilterRowOperatorType](http://docs.devexpress.devx/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowOperatorType) property is set to the specified value and the column values are filtered.
+Within each grid column, the [FilterRowCellTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowCellTemplate) property specifies the template used for the filter row cell. The template contains an **OperatorType** component (see the [OperatorType.razor](./CS/DxGridFilterOperatorSelector/Components/OperatorType.razor) file). The component includes a DxButton that activates a dropdown window with a list of operators. When a user selects an operator, the column's [FilterRowOperatorType](http://docs.devexpress.devx/Blazor/DevExpress.Blazor.DxGridDataColumn.FilterRowOperatorType) property is set to the specified value and the column values are filtered.
 
 ![Grid with filter](image.png)
 
-## Files to Look At
+## Files to Review
 
 - [Grid.razor](./CS/DxGridFilterOperatorSelector/Pages/Grid.razor)
 - [OperatorType.razor](./CS/DxGridFilterOperatorSelector/Components/OperatorType.razor)
