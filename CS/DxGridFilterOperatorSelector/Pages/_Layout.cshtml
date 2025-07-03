@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
+@using DevExpress.Blazor
 @namespace DxGridFilterOperatorSelector.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -12,7 +13,9 @@
     <link href="DxGridFilterOperatorSelector.styles.css" rel="stylesheet" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
     <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
-    <link href="_content/DevExpress.Blazor.Themes/blazing-berry.bs5.min.css" rel="stylesheet" />
+    @foreach (var file in Themes.Fluent.GetFilePaths()) {
+        <link href="@file" rel="stylesheet" />
+    }
 </head>
 <body>
     @{
